@@ -44,7 +44,7 @@ footer{margin-top:28px;color:var(--mute);font-size:13px}a{color:var(--acc)}
   </div>
   <div class="card">
     <strong>Ask the desk about any pair</strong>
-    <form id="pform" style="margin-top:8px"><input id="psym" value="DOGEUSDT" aria-label="Binance USDT pair"><button>Judge now</button></form>
+    <form id="pform" style="margin-top:8px"><input id="psym" value="DOGEUSD" aria-label="Kraken USD pair"><button>Judge now</button></form>
     <div id="pout" class="mute" style="margin-top:8px">Preview only, nothing is recorded.</div>
   </div>
 </div>
@@ -54,7 +54,7 @@ footer{margin-top:28px;color:var(--mute);font-size:13px}a{color:var(--acc)}
   <div class="scroll"><table><thead><tr><th>Day</th><th>Pair</th><th>Price</th><th>Score</th><th>Action</th><th>Why</th><th>Hash</th></tr></thead><tbody id="ledger"></tbody></table></div>
 </div>
 
-<footer>Data: Binance public daily candles and the alternative.me Fear &amp; Greed index. Rules version shown on each entry. Source: <a href="https://github.com/DesignMaster-Solutions/bull-bear-desk">github.com/DesignMaster-Solutions/bull-bear-desk</a>. Built by Design Master Solutions LLC.</footer>
+<footer>Data: Kraken public daily candles and the alternative.me Fear &amp; Greed index. Rules version shown on each entry. Source: <a href="https://github.com/DesignMaster-Solutions/bull-bear-desk">github.com/DesignMaster-Solutions/bull-bear-desk</a>. Built by Design Master Solutions LLC.</footer>
 </main>
 <script>
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -68,11 +68,11 @@ function debate(e, v) {
 async function load() {
   const s = await (await fetch("/api/summary")).json();
   document.getElementById("desks").innerHTML = s.filter(d => d.last).map(d => `<div class="card fade">
-    <div class="row" style="justify-content:space-between"><strong>${d.symbol.replace("USDT","")}</strong><span class="num mute">${d.last.evidence.price}</span></div>
+    <div class="row" style="justify-content:space-between"><strong>${d.symbol.replace(/USD$/,"")}</strong><span class="num mute">${d.last.evidence.price}</span></div>
     <div class="mute num" style="font-size:13px">${d.days} days judged · ${d.trades} trades · ${d.wins}W/${d.losses}L · realized ${d.realized} · open ${d.unrealized} (of 10,000 practice)</div>
     ${debate(d.last.evidence, d.last.verdict)}</div>`).join("");
   const l = await (await fetch("/api/ledger")).json();
-  document.getElementById("ledger").innerHTML = l.slice().reverse().map(x => `<tr><td>${x.evidence.asOf}</td><td>${x.symbol.replace("USDT","")}</td><td class="num">${x.evidence.price}</td><td class="num">${x.verdict.score}</td><td><span class="tag ${x.verdict.action}">${x.verdict.action}</span></td><td>${esc(x.verdict.reason)}</td><td><code title="${x.hash}">${x.hash.slice(0,10)}</code></td></tr>`).join("");
+  document.getElementById("ledger").innerHTML = l.slice().reverse().map(x => `<tr><td>${x.evidence.asOf}</td><td>${x.symbol.replace(/USD$/,"")}</td><td class="num">${x.evidence.price}</td><td class="num">${x.verdict.score}</td><td><span class="tag ${x.verdict.action}">${x.verdict.action}</span></td><td>${esc(x.verdict.reason)}</td><td><code title="${x.hash}">${x.hash.slice(0,10)}</code></td></tr>`).join("");
 }
 document.getElementById("vbtn").onclick = async () => {
   const out = document.getElementById("vout"); out.textContent = "Verifying…";

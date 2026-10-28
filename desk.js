@@ -1,15 +1,18 @@
 import { buildEvidence, judge, seal, DEFAULT_RISK } from "./agents.js";
 
-export const SYMBOLS = ["BTCUSDT", "ETHUSDT", "SOLUSDT"];
+export const SYMBOLS = ["BTCUSD", "ETHUSD", "SOLUSD"];
 const UA = { "User-Agent": "Mozilla/5.0 bull-bear-desk" };
 
 // Closed daily bars only (the open candle changes every second and would make verdicts unrepeatable).
+// Kraken public OHLC: reachable from Cloudflare and GitHub Actions (Binance answers 403 there).
 export async function dailyBars(symbol, limit) {
-  const res = await fetch(`https://data-api.binance.vision/api/v3/klines?symbol=${symbol}&interval=1d&limit=${limit + 1}`, { headers: UA });
-  if (!res.ok) throw new Error(`binance ${res.status}`);
-  const rows = await res.json();
-  return rows.filter(k => k[6] < Date.now())
-    .map(k => ({ t: new Date(k[0]).toISOString().slice(0, 10), o: +k[1], h: +k[2], l: +k[3], c: +k[4], v: +k[5] }));
+  const res = await fetch(`https://api.kraken.com/0/public/OHLC?pair=${symbol}&interval=1440`, { headers: UA });
+  if (!res.ok) throw new Error(`kraken ${res.status}`);
+  const { error, result } = await res.json();
+  if (error?.length) throw new Error(`kraken: ${error.join(", ")}`);
+  const rows = Object.entries(result).find(([k]) => k !== "last")[1];
+  const closed = rows.filter(k => (k[0] + 86400) * 1000 <= Date.now());
+  return closed.slice(-limit).map(k => ({ t: new Date(k[0] * 1000).toISOString().slice(0, 10), o: +k[1], h: +k[2], l: +k[3], c: +k[4], v: +k[6] }));
 }
 
 // Fear & Greed by date (YYYY-MM-DD), so replayed days use the reading of that day.

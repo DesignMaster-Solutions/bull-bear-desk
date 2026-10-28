@@ -7,7 +7,7 @@ Live: https://bull-bear-desk.designmaster.workers.dev
 
 ## How it decides
 
-1. **Evidence** (`buildEvidence`): from closed Binance daily candles and the Fear & Greed index of that day: price, 1d/7d change, SMA20/SMA50, RSI14, ATR14, volume vs its 20-day average, 30-day high/low.
+1. **Evidence** (`buildEvidence`): from closed Kraken daily candles and the Fear & Greed index of that day: price, 1d/7d change, SMA20/SMA50, RSI14, ATR14, volume vs its 20-day average, 30-day high/low.
 2. **Bull agent and bear agent** (`argue`): each reads the same evidence and argues only its side, citing the number behind every claim. Rules and weights are published in `agents.js` and versioned (`RULES_VERSION`).
 3. **Judge** (`judge`): score = bull weight minus bear weight. Flat and score >= 2: buy. Long and stop hit, target hit or score <= -2: exit. Otherwise hold, with the reason written out.
 4. **Risk limits**: a stop-out loses at most 1% of a 10,000 practice account (stop = 2x ATR, target = 3x ATR) and exposure is capped at 25%. Long-only: a bear win means stay flat.
@@ -20,9 +20,9 @@ Live: https://bull-bear-desk.designmaster.workers.dev
 ## API
 
 - `GET /api/summary`: per-pair last debate, trades, wins/losses, realized and open P&L
-- `GET /api/ledger?symbol=BTCUSDT`: the trail
+- `GET /api/ledger?symbol=BTCUSD`: the trail
 - `GET /api/verify`: re-hash and re-judge the whole trail
-- `GET /api/preview?symbol=DOGEUSDT`: what the desk would decide now for any Binance USDT pair (not recorded)
+- `GET /api/preview?symbol=DOGEUSD`: what the desk would decide now for any Kraken USD pair (not recorded)
 
 ## Run
 

@@ -22,8 +22,8 @@ export default {
     }
     if (url.pathname === "/api/verify") return json(await verifyChain(await load()));
     if (url.pathname === "/api/preview") {
-      // What the desk would decide right now for any Binance USDT pair, without recording.
-      const symbol = (url.searchParams.get("symbol") || "BTCUSDT").toUpperCase().replace(/[^A-Z0-9]/g, "");
+      // What the desk would decide right now for any Kraken USD pair, without recording.
+      const symbol = (url.searchParams.get("symbol") || "BTCUSD").toUpperCase().replace(/[^A-Z0-9]/g, "");
       try {
         const bars = await dailyBars(symbol, 60);
         const fng = await fngByDate(2);
