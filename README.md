@@ -5,7 +5,7 @@ It interprets market evidence, records the practice trade it would make, and kee
 
 Live: https://bull-bear-desk.designmaster.workers.dev
 
-Demo video (2:32): [docs/demo.mp4](docs/demo.mp4)
+Demo video (2:33): https://youtu.be/xDoT_PQMIW8 (also in [docs/demo.mp4](docs/demo.mp4))
 
 ## How it decides
 
