@@ -5,6 +5,8 @@ It interprets market evidence, records the practice trade it would make, and kee
 
 Live: https://bull-bear-desk.designmaster.workers.dev
 
+Demo video (2:32): [docs/demo.mp4](docs/demo.mp4)
+
 ## How it decides
 
 1. **Evidence** (`buildEvidence`): from closed Kraken daily candles and the Fear & Greed index of that day: price, 1d/7d change, SMA20/SMA50, RSI14, ATR14, volume vs its 20-day average, 30-day high/low.
