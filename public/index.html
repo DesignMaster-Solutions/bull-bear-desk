@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bull/Bear Desk: a practice-trading agent with a verifiable reasoning trail</title>
+<meta name="description" content="Two agents argue from the same market evidence, a judge decides, and every practice trade is sealed in a hash chain anyone can re-run.">
+<style>
+:root{--bg:#0f1115;--card:#171a21;--line:#262b36;--ink:#e8eaf0;--mute:#9aa3b2;--bull:#3fbf7f;--bear:#e5534b;--acc:#f0b429}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+h1{font-size:clamp(22px,4vw,32px);margin:0 0 4px}p.lead{color:var(--mute);margin:0 0 20px;max-width:70ch}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:nowrap;white-space:nowrap}
+.tag{font-size:12px;padding:2px 8px;border-radius:99px;border:1px solid var(--line);color:var(--mute)}
+.BUY{color:var(--bull);border-color:var(--bull)}.EXIT{color:var(--bear);border-color:var(--bear)}.HOLD{color:var(--acc);border-color:var(--acc)}
+.side h3{margin:10px 0 4px;font-size:13px;text-transform:uppercase;letter-spacing:.04em}.bull h3{color:var(--bull)}.bear h3{color:var(--bear)}
+.side ul{margin:0;padding-left:18px;color:var(--mute)}.side li{margin:2px 0}
+.judge{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
+.num{font-variant-numeric:tabular-nums}.mute{color:var(--mute)}
+table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left}
+.scroll{overflow:auto;max-height:420px}
+code{font-size:12px;color:var(--mute);word-break:break-all}
+form{display:flex;gap:8px;flex-wrap:nowrap}input{flex:1;min-width:0;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:8px}
+button{background:var(--acc);color:#111;border:0;border-radius:8px;padding:8px 14px;font-weight:600;cursor:pointer;white-space:nowrap}
+button:active{transform:scale(.97)}
+.fade{animation:in .35s ease-out both}@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.fade{animation:none}}
+footer{margin-top:28px;color:var(--mute);font-size:13px}a{color:var(--acc)}
+</style>
+</head>
+<body>
+<main>
+<h1>Bull/Bear Desk</h1>
+<p class="lead">A bull agent and a bear agent argue from the same daily market evidence. A judge weighs the arguments with published rules, sizes a practice trade against your risk limits, and seals the decision in a hash chain. Any entry can be re-judged from its stored evidence and must come out the same. Practice trades only: no real orders, no advice.</p>
+
+<div class="grid" id="desks"></div>
+
+<div class="grid" style="margin-top:14px">
+  <div class="card">
+    <div class="row" style="justify-content:space-between"><strong>Verify the whole trail</strong><button id="vbtn">Verify</button></div>
+    <p class="mute" id="vout">Recomputes every hash and re-runs the judge on every stored evidence snapshot.</p>
+  </div>
+  <div class="card">
+    <strong>Ask the desk about any pair</strong>
+    <form id="pform" style="margin-top:8px"><input id="psym" value="DOGEUSDT" aria-label="Binance USDT pair"><button>Judge now</button></form>
+    <div id="pout" class="mute" style="margin-top:8px">Preview only, nothing is recorded.</div>
+  </div>
+</div>
+
+<div class="card" style="margin-top:14px">
+  <strong>Ledger</strong> <span class="mute">(newest first)</span>
+  <div class="scroll"><table><thead><tr><th>Day</th><th>Pair</th><th>Price</th><th>Score</th><th>Action</th><th>Why</th><th>Hash</th></tr></thead><tbody id="ledger"></tbody></table></div>
+</div>
+
+<footer>Data: Binance public daily candles and the alternative.me Fear &amp; Greed index. Rules version shown on each entry. Source: <a href="https://github.com/DesignMaster-Solutions/bull-bear-desk">github.com/DesignMaster-Solutions/bull-bear-desk</a>. Built by Design Master Solutions LLC.</footer>
+</main>
+<script>
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const li = xs => xs.length ? xs.map(x => `<li>${esc(x.because)} <span class="tag">+${x.weight}</span></li>`).join("") : '<li>No argument from this evidence.</li>';
+function debate(e, v) {
+  return `<div class="side bull"><h3>Bull agent</h3><ul>${li(v.bull)}</ul></div>
+  <div class="side bear"><h3>Bear agent</h3><ul>${li(v.bear)}</ul></div>
+  <div class="judge"><div class="row"><span class="tag ${v.action}">${v.action}</span><span class="num">score ${v.score}</span><span class="mute">${esc(e.asOf)}</span></div>
+  <p style="margin:6px 0 0">${esc(v.reason)}</p>${v.trade ? `<p class="mute num" style="margin:4px 0 0">${v.trade.side} ${v.trade.qty} @ ${v.trade.price}${v.trade.stop ? ` · stop ${v.trade.stop} · target ${v.trade.target}` : ""}${v.trade.pnl !== undefined ? ` · P&amp;L ${v.trade.pnl}` : ""}</p>` : ""}</div>`;
+}
+async function load() {
+  const s = await (await fetch("/api/summary")).json();
+  document.getElementById("desks").innerHTML = s.filter(d => d.last).map(d => `<div class="card fade">
+    <div class="row" style="justify-content:space-between"><strong>${d.symbol.replace("USDT","")}</strong><span class="num mute">${d.last.evidence.price}</span></div>
+    <div class="mute num" style="font-size:13px">${d.days} days judged · ${d.trades} trades · ${d.wins}W/${d.losses}L · realized ${d.realized} · open ${d.unrealized} (of 10,000 practice)</div>
+    ${debate(d.last.evidence, d.last.verdict)}</div>`).join("");
+  const l = await (await fetch("/api/ledger")).json();
+  document.getElementById("ledger").innerHTML = l.slice().reverse().map(x => `<tr><td>${x.evidence.asOf}</td><td>${x.symbol.replace("USDT","")}</td><td class="num">${x.evidence.price}</td><td class="num">${x.verdict.score}</td><td><span class="tag ${x.verdict.action}">${x.verdict.action}</span></td><td>${esc(x.verdict.reason)}</td><td><code title="${x.hash}">${x.hash.slice(0,10)}</code></td></tr>`).join("");
+}
+document.getElementById("vbtn").onclick = async () => {
+  const out = document.getElementById("vout"); out.textContent = "Verifying…";
+  const r = await (await fetch("/api/verify")).json();
+  out.innerHTML = r.ok ? `All ${r.entries} entries verified. Chain head <code>${r.head}</code>` : `Broken at entry ${r.at}: ${esc(r.why)}`;
+};
+document.getElementById("pform").onsubmit = async ev => {
+  ev.preventDefault(); const out = document.getElementById("pout"); out.textContent = "Judging…";
+  const r = await (await fetch("/api/preview?symbol=" + encodeURIComponent(document.getElementById("psym").value))).json();
+  out.innerHTML = r.error ? esc(r.error) : debate(r.evidence, r.verdict);
+};
+load();
+</script>
+</body>
+</html>

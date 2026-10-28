@@ -1,0 +1,1 @@
+{ "name": "bull-bear-desk", "private": true, "type": "module", "scripts": { "test": "node --test test/", "record": "node record.mjs" } }
