@@ -23,6 +23,8 @@ table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:6px 8px;b
 .scroll{overflow:auto;max-height:420px}
 code{font-size:12px;color:var(--mute);word-break:break-all}
 form{display:flex;gap:8px;flex-wrap:nowrap}input{flex:1;min-width:0;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:8px}
+textarea{display:block;width:100%;margin-top:4px;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:8px;font:13px/1.4 ui-monospace,monospace}
+label input{margin-top:4px}
 button{background:var(--acc);color:#111;border:0;border-radius:8px;padding:8px 14px;font-weight:600;cursor:pointer;white-space:nowrap}
 button:active{transform:scale(.97)}
 .fade{animation:in .35s ease-out both}@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
@@ -47,6 +49,28 @@ footer{margin-top:28px;color:var(--mute);font-size:13px}a{color:var(--acc)}
     <form id="pform" style="margin-top:8px"><input id="psym" value="DOGEUSD" aria-label="Kraken USD pair"><button>Judge now</button></form>
     <div id="pout" class="mute" style="margin-top:8px">Preview only, nothing is recorded.</div>
   </div>
+</div>
+
+<div class="card" style="margin-top:14px" id="kol">
+  <div class="row" style="justify-content:space-between"><strong>Multi-KOL narrative agent</strong><span class="tag">up to 20 voices</span></div>
+  <p class="mute" style="margin:6px 0 10px">Pick the voices you trust. The agent reads their posts, extracts each token with its sentiment, conviction and urgency, and checks whether the voices converge on the same side inside the window. A converged narrative enters the same bull/bear debate as a cited argument, and the judge sizes a practice position with your risk limits. Nothing is recorded.</p>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+    <label class="mute">Trusted voices (one per line; posts from anyone else are ignored)<textarea id="kvoices" rows="4">voice_a
+voice_b
+voice_c</textarea></label>
+    <label class="mute">Posts copied from X or Discord, as <code>author: text</code><textarea id="kposts" rows="4">voice_a: Loading more $SOL here, high conviction
+voice_b: SOL breakout today, buying
+voice_c: solana looks bullish, accumulating</textarea></label>
+  </div>
+  <label class="mute" style="display:block;margin-top:8px">Public Telegram channels (read live from t.me/s/, comma separated)<input id="ktg" value="WatcherGuru, whale_alert_io"></label>
+  <form id="kform" style="margin-top:8px;flex-wrap:wrap">
+    <label class="mute row">Voices to converge <input id="kmin" type="number" min="1" max="20" value="3" style="width:64px;flex:none"></label>
+    <label class="mute row">Risk per trade % <input id="krisk" type="number" step="0.1" min="0.1" max="5" value="1" style="width:72px;flex:none"></label>
+    <label class="mute row">Max exposure % <input id="kcap" type="number" min="1" max="100" value="25" style="width:72px;flex:none"></label>
+    <button>Read the voices</button>
+  </form>
+  <p class="mute" style="font-size:13px">The prefilled posts are sample text under placeholder names: replace them with posts from the voices you follow.</p>
+  <div id="kout" style="margin-top:8px"></div>
 </div>
 
 <div class="card" style="margin-top:14px">
@@ -83,6 +107,21 @@ document.getElementById("pform").onsubmit = async ev => {
   ev.preventDefault(); const out = document.getElementById("pout"); out.textContent = "Judging…";
   const r = await (await fetch("/api/preview?symbol=" + encodeURIComponent(document.getElementById("psym").value))).json();
   out.innerHTML = r.error ? esc(r.error) : debate(r.evidence, r.verdict);
+};
+document.getElementById("kform").onsubmit = async ev => {
+  ev.preventDefault(); const out = document.getElementById("kout"); out.textContent = "Reading the voices…";
+  const lines = id => document.getElementById(id).value;
+  const r = await (await fetch("/api/narrative", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({
+    voices: lines("kvoices").split("\n"), posts: lines("kposts"), telegram: lines("ktg").split(","),
+    minVoices: lines("kmin"), riskPct: lines("krisk"), maxPositionPct: lines("kcap") }) })).json();
+  if (r.error) { out.textContent = r.error; return; }
+  const n = r.narrative;
+  const src = r.sources.map(s => `${esc(s.channel)} ${s.posts} posts`).join(" · ");
+  const rows = n.tokens.map(t => `<tr><td>${esc(t.token)}</td><td class="num">${t.bull}</td><td class="num">${t.bear}</td><td class="num">${t.conviction}</td><td class="num">${t.urgency}</td><td>${t.side ? `<span class="tag ${t.side === "bull" ? "BUY" : "EXIT"}">${t.side} narrative</span>` : '<span class="mute">no convergence</span>'}</td></tr>`).join("");
+  const dec = r.decisions.map(d => d.error ? `<p class="mute">${esc(d.error)}</p>` : `<div class="card fade" style="margin-top:10px"><strong>${esc(d.token)}</strong> <span class="mute num">${d.evidence.price}</span>${debate(d.evidence, d.verdict)}</div>`).join("");
+  out.innerHTML = `<p class="mute num" style="font-size:13px">${n.voices} trusted voices · window ${n.windowHours} h · ${src || "no Telegram channel"}</p>
+    ${rows ? `<div class="scroll"><table><thead><tr><th>Token</th><th>Bull voices</th><th>Bear voices</th><th>Conviction</th><th>Urgency</th><th>Narrative</th></tr></thead><tbody>${rows}</tbody></table></div>` : '<p class="mute">No token with a clear stance from the trusted voices.</p>'}
+    ${dec || '<p class="mute">No narrative converged, so the desk opens nothing.</p>'}`;
 };
 load();
 </script>

@@ -1,7 +1,7 @@
 // Bull/Bear Desk: pure, deterministic agents. Same evidence in => same verdict out.
 // No network and no randomness here, so any ledger entry can be re-judged and verified.
 
-export const RULES_VERSION = "bbd-1";
+export const RULES_VERSION = "bbd-2"; // bbd-2 adds the KOL narrative rules; entries without e.kol judge exactly as bbd-1
 
 const sma = (xs, n) => xs.slice(-n).reduce((a, b) => a + b, 0) / n;
 
@@ -62,6 +62,9 @@ const RULES = [
   ["breakdown", "bear", 1, e => e.price <= e.low30, e => `Closing at the 30-day low (${e.low30}).`],
   ["crowd_fear", "bull", 1, e => e.fng !== null && e.fng <= 25, e => `Fear & Greed at ${e.fng} (extreme fear): contrarian buy zone.`],
   ["crowd_greed", "bear", 1, e => e.fng !== null && e.fng >= 75, e => `Fear & Greed at ${e.fng} (extreme greed): contrarian caution.`],
+  // e.kol comes from narrative.js: trusted voices that converged on this token inside the window.
+  ["kol_converge_bull", "bull", 2, e => e.kol?.side === "bull", e => `${e.kol.bull} of ${e.kol.voices} trusted voices converge bullish on ${e.kol.token} (avg conviction ${e.kol.conviction}).`],
+  ["kol_converge_bear", "bear", 2, e => e.kol?.side === "bear", e => `${e.kol.bear} of ${e.kol.voices} trusted voices converge bearish on ${e.kol.token} (avg conviction ${e.kol.conviction}).`],
 ];
 
 export function argue(side, e) {
