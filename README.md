@@ -24,6 +24,8 @@ Demo video (2:33): https://youtu.be/xDoT_PQMIW8 (also in [docs/demo.mp4](docs/de
 3. **Convergence** (`narrative`): inside the window (default 24 h), each voice counts once per token, by its latest non-neutral post. A side converges when at least N voices (default 3) take it and outnumber the other side at least 2 to 1. A divided crowd is not a narrative.
 4. **Decision**: a converged narrative is stored in the evidence as `e.kol` and becomes a cited argument in the same debate (`kol_converge_bull` / `kol_converge_bear`, weight 2, rules `bbd-2`). The judge then sizes the practice position with the user's risk per trade and max exposure (`POST /api/narrative`). Because `e.kol` lives in the evidence, any such decision can be re-judged by `verifyChain` like the daily ones. Entries without `e.kol` judge exactly as `bbd-1`, and the existing 276-entry ledger still verifies.
 
+5. **Autonomous daily run**: `record.mjs` reads the channels in `kol.json` (8 public crypto news and analytics channels, no API key) every day before judging. A narrative that converged inside the last 24 h on BTC, ETH or SOL is stored in that day's evidence and cited in the recorded debate; days without convergence are recorded without it, and if Telegram is unreachable the day is still recorded and the run log says so. Replayed days never carry a narrative (it describes now, not the past).
+
 Limits, stated: X has no free read API, so X posts are pasted, not fetched; sentiment is a lexicon, not a language model, so sarcasm reads literally; a post's sentiment applies to every token it mentions.
 
 ## Where the trail lives
@@ -36,7 +38,7 @@ Limits, stated: X has no free read API, so X posts are pasted, not fetched; sent
 - `GET /api/ledger?symbol=BTCUSD`: the trail
 - `GET /api/verify`: re-hash and re-judge the whole trail
 - `GET /api/preview?symbol=DOGEUSD`: what the desk would decide now for any Kraken USD pair (not recorded)
-- `POST /api/narrative` `{voices, posts, telegram, minVoices, windowHours, riskPct, maxPositionPct}`: Multi-KOL narrative, converged tokens and the practice position for each (not recorded)
+- `POST /api/narrative` `{voices, posts, telegram, minVoices, windowHours, riskPct, maxPositionPct}`: Multi-KOL narrative on demand, converged tokens and the practice position for each (not recorded; the daily recorder is what records, see above)
 
 ## Run
 

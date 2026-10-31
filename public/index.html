@@ -53,7 +53,7 @@ footer{margin-top:28px;color:var(--mute);font-size:13px}a{color:var(--acc)}
 
 <div class="card" style="margin-top:14px" id="kol">
   <div class="row" style="justify-content:space-between"><strong>Multi-KOL narrative agent</strong><span class="tag">up to 20 voices</span></div>
-  <p class="mute" style="margin:6px 0 10px">Pick the voices you trust. The agent reads their posts, extracts each token with its sentiment, conviction and urgency, and checks whether the voices converge on the same side inside the window. A converged narrative enters the same bull/bear debate as a cited argument, and the judge sizes a practice position with your risk limits. Nothing is recorded.</p>
+  <p class="mute" style="margin:6px 0 10px">Pick the voices you trust. The agent reads their posts, extracts each token with its sentiment, conviction and urgency, and checks whether the voices converge on the same side inside the window. A converged narrative enters the same bull/bear debate as a cited argument, and the judge sizes a practice position with your risk limits. This form records nothing. On its own, the recorder reads the channels in <code>kol.json</code> every day at 00:10 UTC; when they converge on BTC, ETH or SOL, the narrative is stored in that day's sealed evidence and cited in the debate (rows tagged below).</p>
   <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
     <label class="mute">Trusted voices (one per line; posts from anyone else are ignored)<textarea id="kvoices" rows="4">voice_a
 voice_b
@@ -96,7 +96,7 @@ async function load() {
     <div class="mute num" style="font-size:13px">${d.days} days judged · ${d.trades} trades · ${d.wins}W/${d.losses}L · realized ${d.realized} · open ${d.unrealized} (of 10,000 practice)</div>
     ${debate(d.last.evidence, d.last.verdict)}</div>`).join("");
   const l = await (await fetch("/api/ledger")).json();
-  document.getElementById("ledger").innerHTML = l.slice().reverse().map(x => `<tr><td>${x.evidence.asOf}</td><td>${x.symbol.replace(/USD$/,"")}</td><td class="num">${x.evidence.price}</td><td class="num">${x.verdict.score}</td><td><span class="tag ${x.verdict.action}">${x.verdict.action}</span></td><td>${esc(x.verdict.reason)}</td><td><code title="${x.hash}">${x.hash.slice(0,10)}</code></td></tr>`).join("");
+  document.getElementById("ledger").innerHTML = l.slice().reverse().map(x => `<tr><td>${x.evidence.asOf}</td><td>${x.symbol.replace(/USD$/,"")}</td><td class="num">${x.evidence.price}</td><td class="num">${x.verdict.score}</td><td><span class="tag ${x.verdict.action}">${x.verdict.action}</span></td><td>${x.evidence.kol ? `<span class="tag ${x.evidence.kol.side === "bull" ? "BUY" : "EXIT"}" title="${esc(x.verdict[x.evidence.kol.side].find(a => a.id.startsWith("kol_"))?.because || "")}">${x.evidence.kol.side} narrative ${x.evidence.kol[x.evidence.kol.side]}/${x.evidence.kol.voices}</span> ` : ""}${esc(x.verdict.reason)}</td><td><code title="${x.hash}">${x.hash.slice(0,10)}</code></td></tr>`).join("");
 }
 document.getElementById("vbtn").onclick = async () => {
   const out = document.getElementById("vout"); out.textContent = "Verifying…";

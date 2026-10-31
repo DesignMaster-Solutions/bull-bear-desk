@@ -80,6 +80,32 @@ export function parsePasted(text, ts = new Date().toISOString()) {
     .map(m => ({ author: m[1], ts, text: m[2], source: "pasted" }));
 }
 
+// Public Telegram previews for each channel -> posts, plus how many posts each channel gave (fetchFn injectable for tests).
+export async function fetchTelegram(channels, fetchFn = fetch) {
+  const posts = [], sources = [];
+  for (const c of channels) {
+    const res = await fetchFn(`https://t.me/s/${c}`, { headers: { "User-Agent": "Mozilla/5.0 bull-bear-desk" } });
+    const got = res.ok ? parseTelegram(c, await res.text()) : [];
+    sources.push({ channel: c, posts: got.length });
+    posts.push(...got);
+  }
+  return { posts, sources };
+}
+
+export const cleanChannels = list => [...new Set((list || []).map(c => String(c).trim().replace(/^@|^https?:\/\/t\.me\/(s\/)?/g, "")).filter(c => /^\w{4,40}$/.test(c)))].slice(0, MAX_VOICES);
+
+// The evidence field the judge reads (e.kol), one per token the voices converged on.
+export const converged = n => Object.fromEntries(n.tokens.filter(t => t.side)
+  .map(t => [t.token, { token: t.token, side: t.side, bull: t.bull, bear: t.bear, voices: n.voices, conviction: t.conviction }]));
+
+// What the recorder runs on its own every day: read the channels in kol.json, find the converged tokens.
+export async function readVoices({ telegram, minVoices = 3, windowHours = 24 } = {}, fetchFn = fetch) {
+  const channels = cleanChannels(telegram);
+  const { posts, sources } = await fetchTelegram(channels, fetchFn);
+  const n = narrative(posts, { voices: channels.map(c => `tg:${c}`), minVoices, windowHours });
+  return { sources, narrative: n, kol: converged(n) };
+}
+
 const decode = s => s.replace(/<br\s*\/?>/g, " ").replace(/<[^>]+>/g, "").replace(/&#(\d+);/g, (_, n) => String.fromCharCode(+n))
   .replace(/&quot;/g, '"').replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
 

@@ -31,7 +31,9 @@ function applyTrade(pos, v) {
 }
 
 // Appends one entry per closed day not yet judged, for each symbol. Idempotent per (symbol, day).
-export async function run(ledger, replayDays = 0) {
+// kol: converged narratives by token (narrative.js readVoices); they describe the last 24 h, so they are
+// stored only in the newest live day's evidence, where the judge cites them and verifyChain can re-judge them.
+export async function run(ledger, replayDays = 0, kol = {}) {
   const fng = await fngByDate(Math.max(replayDays, 2) + 5);
   let added = 0;
   for (const symbol of SYMBOLS) {
@@ -43,6 +45,8 @@ export async function run(ledger, replayDays = 0) {
     if (start < 0) continue;
     for (let i = Math.max(start, 59); i < bars.length; i++) {
       const evidence = buildEvidence(symbol, bars.slice(i - 59, i + 1), fng[bars[i].t] ?? null);
+      const voice = !replayDays && i === bars.length - 1 ? kol[symbol.replace(/USD$/, "")] : null;
+      if (voice) evidence.kol = voice;
       const verdict = judge(evidence, pos, DEFAULT_RISK);
       const positionAfter = applyTrade(pos, verdict);
       const prevHash = ledger.at(-1)?.hash ?? "genesis";

@@ -1,0 +1,6 @@
+{
+  "comment": "Voices the desk reads by itself every day (record.mjs). Public Telegram channels, no API key. Replace with the voices you follow.",
+  "telegram": ["WatcherGuru", "wublockchainenglish", "TreeNewsFeed", "cointelegraph", "coinbureau", "cryptoquant_official", "glassnode", "BitcoinNews"],
+  "minVoices": 3,
+  "windowHours": 24
+}
