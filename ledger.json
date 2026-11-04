@@ -16908,5 +16908,173 @@
   "positionAfter": null,
   "prevHash": "903043f4578bafb47d69101e830e9d0b4a8d4b6ed996d697c3f8600718dfd0c0",
   "hash": "37aa2022cda7b0251cfaf43fa071dc17b0e1d2af5dbe158c948ca4e2fd90d1d7"
+ },
+ {
+  "symbol": "BTCUSD",
+  "mode": "live",
+  "evidence": {
+   "symbol": "BTCUSD",
+   "asOf": "2026-11-03",
+   "price": 77331.7,
+   "chg1d": 0.86,
+   "chg7d": -4.29,
+   "sma20": 80291.045,
+   "sma50": 81895.438,
+   "rsi14": 29.59,
+   "atr14": 1957.4929,
+   "volRatio": 1.13,
+   "high30": 85751.5,
+   "low30": 76675.8,
+   "fng": 26
+  },
+  "positionBefore": null,
+  "risk": {
+   "equity": 10000,
+   "riskPct": 1,
+   "atrStop": 2,
+   "atrTarget": 3,
+   "maxPositionPct": 25
+  },
+  "verdict": {
+   "rules": "bbd-2",
+   "bull": [
+    {
+     "id": "oversold",
+     "weight": 1,
+     "because": "RSI14 29.59 is oversold; mean reversion favors a bounce."
+    }
+   ],
+   "bear": [
+    {
+     "id": "trend_down",
+     "weight": 2,
+     "because": "Price 77331.7 sits below SMA20 80291.045, which is below SMA50 81895.438: the trend is down."
+    },
+    {
+     "id": "momentum_7d_down",
+     "weight": 1,
+     "because": "Down -4.29% over 7 days."
+    }
+   ],
+   "score": -2,
+   "action": "HOLD",
+   "reason": "Bear case wins (score -2); long-only desk stays flat.",
+   "trade": null
+  },
+  "positionAfter": null,
+  "prevHash": "37aa2022cda7b0251cfaf43fa071dc17b0e1d2af5dbe158c948ca4e2fd90d1d7",
+  "hash": "1f9caba35cc51b5dacb9d62fa89dab70dbb2e0a4f69de8fe6e46c1a85c0f2f03"
+ },
+ {
+  "symbol": "ETHUSD",
+  "mode": "live",
+  "evidence": {
+   "symbol": "ETHUSD",
+   "asOf": "2026-11-03",
+   "price": 2271.45,
+   "chg1d": 0.98,
+   "chg7d": -3.23,
+   "sma20": 2350.2245,
+   "sma50": 2505.9176,
+   "rsi14": 28.34,
+   "atr14": 76.9986,
+   "volRatio": 0.79,
+   "high30": 2709.39,
+   "low30": 2241.37,
+   "fng": 26
+  },
+  "positionBefore": null,
+  "risk": {
+   "equity": 10000,
+   "riskPct": 1,
+   "atrStop": 2,
+   "atrTarget": 3,
+   "maxPositionPct": 25
+  },
+  "verdict": {
+   "rules": "bbd-2",
+   "bull": [
+    {
+     "id": "oversold",
+     "weight": 1,
+     "because": "RSI14 28.34 is oversold; mean reversion favors a bounce."
+    }
+   ],
+   "bear": [
+    {
+     "id": "trend_down",
+     "weight": 2,
+     "because": "Price 2271.45 sits below SMA20 2350.2245, which is below SMA50 2505.9176: the trend is down."
+    },
+    {
+     "id": "momentum_7d_down",
+     "weight": 1,
+     "because": "Down -3.23% over 7 days."
+    }
+   ],
+   "score": -2,
+   "action": "HOLD",
+   "reason": "Bear case wins (score -2); long-only desk stays flat.",
+   "trade": null
+  },
+  "positionAfter": null,
+  "prevHash": "1f9caba35cc51b5dacb9d62fa89dab70dbb2e0a4f69de8fe6e46c1a85c0f2f03",
+  "hash": "de6446802485a281f4dd54152a41da7560dc324ba9f98e98fb786c4c09e3de6e"
+ },
+ {
+  "symbol": "SOLUSD",
+  "mode": "live",
+  "evidence": {
+   "symbol": "SOLUSD",
+   "asOf": "2026-11-03",
+   "price": 92.71,
+   "chg1d": 0.96,
+   "chg7d": -8.41,
+   "sma20": 100.7555,
+   "sma50": 108.5976,
+   "rsi14": 17.47,
+   "atr14": 3.9021,
+   "volRatio": 0.79,
+   "high30": 120.76,
+   "low30": 91.83,
+   "fng": 26
+  },
+  "positionBefore": null,
+  "risk": {
+   "equity": 10000,
+   "riskPct": 1,
+   "atrStop": 2,
+   "atrTarget": 3,
+   "maxPositionPct": 25
+  },
+  "verdict": {
+   "rules": "bbd-2",
+   "bull": [
+    {
+     "id": "oversold",
+     "weight": 1,
+     "because": "RSI14 17.47 is oversold; mean reversion favors a bounce."
+    }
+   ],
+   "bear": [
+    {
+     "id": "trend_down",
+     "weight": 2,
+     "because": "Price 92.71 sits below SMA20 100.7555, which is below SMA50 108.5976: the trend is down."
+    },
+    {
+     "id": "momentum_7d_down",
+     "weight": 1,
+     "because": "Down -8.41% over 7 days."
+    }
+   ],
+   "score": -2,
+   "action": "HOLD",
+   "reason": "Bear case wins (score -2); long-only desk stays flat.",
+   "trade": null
+  },
+  "positionAfter": null,
+  "prevHash": "de6446802485a281f4dd54152a41da7560dc324ba9f98e98fb786c4c09e3de6e",
+  "hash": "3d22f6d0ec9a4eb1824fe981243c3597fd5635bb9e96c834032ef8cf6e411428"
  }
 ]
