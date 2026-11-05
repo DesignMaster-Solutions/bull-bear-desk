@@ -17076,5 +17076,151 @@
   "positionAfter": null,
   "prevHash": "de6446802485a281f4dd54152a41da7560dc324ba9f98e98fb786c4c09e3de6e",
   "hash": "3d22f6d0ec9a4eb1824fe981243c3597fd5635bb9e96c834032ef8cf6e411428"
+ },
+ {
+  "symbol": "BTCUSD",
+  "mode": "live",
+  "evidence": {
+   "symbol": "BTCUSD",
+   "asOf": "2026-11-04",
+   "price": 80440.8,
+   "chg1d": 4.02,
+   "chg7d": -1.04,
+   "sma20": 80206.4,
+   "sma50": 81992.552,
+   "rsi14": 38.63,
+   "atr14": 2190.1714,
+   "volRatio": 2.19,
+   "high30": 85542.1,
+   "low30": 76675.8,
+   "fng": 34
+  },
+  "positionBefore": null,
+  "risk": {
+   "equity": 10000,
+   "riskPct": 1,
+   "atrStop": 2,
+   "atrTarget": 3,
+   "maxPositionPct": 25
+  },
+  "verdict": {
+   "rules": "bbd-2",
+   "bull": [
+    {
+     "id": "volume_confirms_up",
+     "weight": 1,
+     "because": "Volume is 2.19x its 20-day average on an up day: buyers are committed."
+    }
+   ],
+   "bear": [],
+   "score": 1,
+   "action": "HOLD",
+   "reason": "No edge (score 1); stay flat.",
+   "trade": null
+  },
+  "positionAfter": null,
+  "prevHash": "3d22f6d0ec9a4eb1824fe981243c3597fd5635bb9e96c834032ef8cf6e411428",
+  "hash": "dc2b157f9bd0145876432a0d604d0d37c6d77d09f4d45e11388b37a1c5fb9675"
+ },
+ {
+  "symbol": "ETHUSD",
+  "mode": "live",
+  "evidence": {
+   "symbol": "ETHUSD",
+   "asOf": "2026-11-04",
+   "price": 2423.16,
+   "chg1d": 6.68,
+   "chg7d": 2.8,
+   "sma20": 2349.413,
+   "sma50": 2506.4526,
+   "rsi14": 45.43,
+   "atr14": 86.5593,
+   "volRatio": 2.07,
+   "high30": 2697.24,
+   "low30": 2241.37,
+   "fng": 34
+  },
+  "positionBefore": null,
+  "risk": {
+   "equity": 10000,
+   "riskPct": 1,
+   "atrStop": 2,
+   "atrTarget": 3,
+   "maxPositionPct": 25
+  },
+  "verdict": {
+   "rules": "bbd-2",
+   "bull": [
+    {
+     "id": "volume_confirms_up",
+     "weight": 1,
+     "because": "Volume is 2.07x its 20-day average on an up day: buyers are committed."
+    }
+   ],
+   "bear": [],
+   "score": 1,
+   "action": "HOLD",
+   "reason": "No edge (score 1); stay flat.",
+   "trade": null
+  },
+  "positionAfter": null,
+  "prevHash": "dc2b157f9bd0145876432a0d604d0d37c6d77d09f4d45e11388b37a1c5fb9675",
+  "hash": "240335bd341bc47eec17c6b3dde9d7cae729a69904493bc4d67b68b2486933cb"
+ },
+ {
+  "symbol": "SOLUSD",
+  "mode": "live",
+  "evidence": {
+   "symbol": "SOLUSD",
+   "asOf": "2026-11-04",
+   "price": 95.53,
+   "chg1d": 3.04,
+   "chg7d": -6.65,
+   "sma20": 100.2665,
+   "sma50": 108.5718,
+   "rsi14": 25.78,
+   "atr14": 4.2321,
+   "volRatio": 1.48,
+   "high30": 120.69,
+   "low30": 91.83,
+   "fng": 34
+  },
+  "positionBefore": null,
+  "risk": {
+   "equity": 10000,
+   "riskPct": 1,
+   "atrStop": 2,
+   "atrTarget": 3,
+   "maxPositionPct": 25
+  },
+  "verdict": {
+   "rules": "bbd-2",
+   "bull": [
+    {
+     "id": "oversold",
+     "weight": 1,
+     "because": "RSI14 25.78 is oversold; mean reversion favors a bounce."
+    }
+   ],
+   "bear": [
+    {
+     "id": "trend_down",
+     "weight": 2,
+     "because": "Price 95.53 sits below SMA20 100.2665, which is below SMA50 108.5718: the trend is down."
+    },
+    {
+     "id": "momentum_7d_down",
+     "weight": 1,
+     "because": "Down -6.65% over 7 days."
+    }
+   ],
+   "score": -2,
+   "action": "HOLD",
+   "reason": "Bear case wins (score -2); long-only desk stays flat.",
+   "trade": null
+  },
+  "positionAfter": null,
+  "prevHash": "240335bd341bc47eec17c6b3dde9d7cae729a69904493bc4d67b68b2486933cb",
+  "hash": "9de91dc24b925779fddb6e30bf9693b276c227e9b8f84d08686f73508dbf12fa"
  }
 ]
