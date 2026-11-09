@@ -17739,5 +17739,176 @@
   "positionAfter": null,
   "prevHash": "bd449e55235f3c04ca6977ee189d3af14496a62a1baac38b9e174da7c5093f1d",
   "hash": "d39c24385e47da6da064144b7129dc1ef87f1f36bd4fe0f40d4de0c3de1228ef"
+ },
+ {
+  "symbol": "BTCUSD",
+  "mode": "live",
+  "evidence": {
+   "symbol": "BTCUSD",
+   "asOf": "2026-11-08",
+   "price": 74737.9,
+   "chg1d": -1.34,
+   "chg7d": -4.48,
+   "sma20": 78980.655,
+   "sma50": 81744.708,
+   "rsi14": 34.83,
+   "atr14": 2362.2643,
+   "volRatio": 0.66,
+   "high30": 84022.5,
+   "low30": 74737.9,
+   "fng": 28
+  },
+  "positionBefore": null,
+  "risk": {
+   "equity": 10000,
+   "riskPct": 1,
+   "atrStop": 2,
+   "atrTarget": 3,
+   "maxPositionPct": 25
+  },
+  "verdict": {
+   "rules": "bbd-2",
+   "bull": [],
+   "bear": [
+    {
+     "id": "trend_down",
+     "weight": 2,
+     "because": "Price 74737.9 sits below SMA20 78980.655, which is below SMA50 81744.708: the trend is down."
+    },
+    {
+     "id": "momentum_7d_down",
+     "weight": 1,
+     "because": "Down -4.48% over 7 days."
+    },
+    {
+     "id": "breakdown",
+     "weight": 1,
+     "because": "Closing at the 30-day low (74737.9)."
+    }
+   ],
+   "score": -4,
+   "action": "HOLD",
+   "reason": "Bear case wins (score -4); long-only desk stays flat.",
+   "trade": null
+  },
+  "positionAfter": null,
+  "prevHash": "d39c24385e47da6da064144b7129dc1ef87f1f36bd4fe0f40d4de0c3de1228ef",
+  "hash": "d51f5a1949bf340146afc457153a4d47ad3222c9392fa2eae7433d41e7e7f9be"
+ },
+ {
+  "symbol": "ETHUSD",
+  "mode": "live",
+  "evidence": {
+   "symbol": "ETHUSD",
+   "asOf": "2026-11-08",
+   "price": 2124.05,
+   "chg1d": -5.04,
+   "chg7d": -6.53,
+   "sma20": 2309.3385,
+   "sma50": 2480.9836,
+   "rsi14": 35.31,
+   "atr14": 95.6036,
+   "volRatio": 1.08,
+   "high30": 2534.19,
+   "low30": 2124.05,
+   "fng": 28
+  },
+  "positionBefore": null,
+  "risk": {
+   "equity": 10000,
+   "riskPct": 1,
+   "atrStop": 2,
+   "atrTarget": 3,
+   "maxPositionPct": 25
+  },
+  "verdict": {
+   "rules": "bbd-2",
+   "bull": [],
+   "bear": [
+    {
+     "id": "trend_down",
+     "weight": 2,
+     "because": "Price 2124.05 sits below SMA20 2309.3385, which is below SMA50 2480.9836: the trend is down."
+    },
+    {
+     "id": "momentum_7d_down",
+     "weight": 1,
+     "because": "Down -6.53% over 7 days."
+    },
+    {
+     "id": "breakdown",
+     "weight": 1,
+     "because": "Closing at the 30-day low (2124.05)."
+    }
+   ],
+   "score": -4,
+   "action": "HOLD",
+   "reason": "Bear case wins (score -4); long-only desk stays flat.",
+   "trade": null
+  },
+  "positionAfter": null,
+  "prevHash": "d51f5a1949bf340146afc457153a4d47ad3222c9392fa2eae7433d41e7e7f9be",
+  "hash": "c4c2e3eaad22468da2fc04294b49df00f8c0016be61627ecbbe09c5fd89a0d03"
+ },
+ {
+  "symbol": "SOLUSD",
+  "mode": "live",
+  "evidence": {
+   "symbol": "SOLUSD",
+   "asOf": "2026-11-08",
+   "price": 86.44,
+   "chg1d": -3.61,
+   "chg7d": -8.44,
+   "sma20": 97.2035,
+   "sma50": 107.2036,
+   "rsi14": 24.01,
+   "atr14": 4.4771,
+   "volRatio": 1.22,
+   "high30": 111.22,
+   "low30": 86.44,
+   "fng": 28
+  },
+  "positionBefore": null,
+  "risk": {
+   "equity": 10000,
+   "riskPct": 1,
+   "atrStop": 2,
+   "atrTarget": 3,
+   "maxPositionPct": 25
+  },
+  "verdict": {
+   "rules": "bbd-2",
+   "bull": [
+    {
+     "id": "oversold",
+     "weight": 1,
+     "because": "RSI14 24.01 is oversold; mean reversion favors a bounce."
+    }
+   ],
+   "bear": [
+    {
+     "id": "trend_down",
+     "weight": 2,
+     "because": "Price 86.44 sits below SMA20 97.2035, which is below SMA50 107.2036: the trend is down."
+    },
+    {
+     "id": "momentum_7d_down",
+     "weight": 1,
+     "because": "Down -8.44% over 7 days."
+    },
+    {
+     "id": "breakdown",
+     "weight": 1,
+     "because": "Closing at the 30-day low (86.44)."
+    }
+   ],
+   "score": -3,
+   "action": "HOLD",
+   "reason": "Bear case wins (score -3); long-only desk stays flat.",
+   "trade": null
+  },
+  "positionAfter": null,
+  "prevHash": "c4c2e3eaad22468da2fc04294b49df00f8c0016be61627ecbbe09c5fd89a0d03",
+  "hash": "cbb28410916f0e5a59fafecea09ebf6ce0fb44b0cf709d03c1d4a0eff7c88a39"
  }
 ]
