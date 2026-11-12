@@ -18255,5 +18255,185 @@
   "positionAfter": null,
   "prevHash": "46f5f92c4d9c506ed8c362995c8b2628783493dd0a3eaa929dfbef2966e1d071",
   "hash": "3ccac072445b7741a1f2d09152b7b2628e1827cf9e6d75fc1a634cb49564af24"
+ },
+ {
+  "symbol": "BTCUSD",
+  "mode": "live",
+  "evidence": {
+   "symbol": "BTCUSD",
+   "asOf": "2026-11-11",
+   "price": 73928.4,
+   "chg1d": 0.31,
+   "chg7d": -8.1,
+   "sma20": 77711.02,
+   "sma50": 81123.254,
+   "rsi14": 30.08,
+   "atr14": 2476.0071,
+   "volRatio": 1,
+   "high30": 84022.5,
+   "low30": 73700.3,
+   "fng": 29,
+   "kol": {
+    "token": "BTC",
+    "side": "bear",
+    "bull": 0,
+    "bear": 5,
+    "voices": 8,
+    "conviction": 0.36
+   }
+  },
+  "positionBefore": null,
+  "risk": {
+   "equity": 10000,
+   "riskPct": 1,
+   "atrStop": 2,
+   "atrTarget": 3,
+   "maxPositionPct": 25
+  },
+  "verdict": {
+   "rules": "bbd-2",
+   "bull": [],
+   "bear": [
+    {
+     "id": "trend_down",
+     "weight": 2,
+     "because": "Price 73928.4 sits below SMA20 77711.02, which is below SMA50 81123.254: the trend is down."
+    },
+    {
+     "id": "momentum_7d_down",
+     "weight": 1,
+     "because": "Down -8.1% over 7 days."
+    },
+    {
+     "id": "kol_converge_bear",
+     "weight": 2,
+     "because": "5 of 8 trusted voices converge bearish on BTC (avg conviction 0.36)."
+    }
+   ],
+   "score": -5,
+   "action": "HOLD",
+   "reason": "Bear case wins (score -5); long-only desk stays flat.",
+   "trade": null
+  },
+  "positionAfter": null,
+  "prevHash": "3ccac072445b7741a1f2d09152b7b2628e1827cf9e6d75fc1a634cb49564af24",
+  "hash": "ee44990c831f62e8e255c34ac1d68ff22025837ea4c7ae8f923e542a7bed8d91"
+ },
+ {
+  "symbol": "ETHUSD",
+  "mode": "live",
+  "evidence": {
+   "symbol": "ETHUSD",
+   "asOf": "2026-11-11",
+   "price": 2053.48,
+   "chg1d": 0.12,
+   "chg7d": -15.26,
+   "sma20": 2255.9695,
+   "sma50": 2442.2432,
+   "rsi14": 29.45,
+   "atr14": 102.2,
+   "volRatio": 0.94,
+   "high30": 2495.97,
+   "low30": 2051,
+   "fng": 29
+  },
+  "positionBefore": null,
+  "risk": {
+   "equity": 10000,
+   "riskPct": 1,
+   "atrStop": 2,
+   "atrTarget": 3,
+   "maxPositionPct": 25
+  },
+  "verdict": {
+   "rules": "bbd-2",
+   "bull": [
+    {
+     "id": "oversold",
+     "weight": 1,
+     "because": "RSI14 29.45 is oversold; mean reversion favors a bounce."
+    }
+   ],
+   "bear": [
+    {
+     "id": "trend_down",
+     "weight": 2,
+     "because": "Price 2053.48 sits below SMA20 2255.9695, which is below SMA50 2442.2432: the trend is down."
+    },
+    {
+     "id": "momentum_7d_down",
+     "weight": 1,
+     "because": "Down -15.26% over 7 days."
+    }
+   ],
+   "score": -2,
+   "action": "HOLD",
+   "reason": "Bear case wins (score -2); long-only desk stays flat.",
+   "trade": null
+  },
+  "positionAfter": null,
+  "prevHash": "ee44990c831f62e8e255c34ac1d68ff22025837ea4c7ae8f923e542a7bed8d91",
+  "hash": "27ca82471f5720629a95df2ece48c2b3a593966ba5c279389139e920fddf1df2"
+ },
+ {
+  "symbol": "SOLUSD",
+  "mode": "live",
+  "evidence": {
+   "symbol": "SOLUSD",
+   "asOf": "2026-11-11",
+   "price": 83.19,
+   "chg1d": -0.06,
+   "chg7d": -12.92,
+   "sma20": 94.0135,
+   "sma50": 105.2936,
+   "rsi14": 18.12,
+   "atr14": 4.7243,
+   "volRatio": 0.86,
+   "high30": 106.88,
+   "low30": 83.19,
+   "fng": 29
+  },
+  "positionBefore": null,
+  "risk": {
+   "equity": 10000,
+   "riskPct": 1,
+   "atrStop": 2,
+   "atrTarget": 3,
+   "maxPositionPct": 25
+  },
+  "verdict": {
+   "rules": "bbd-2",
+   "bull": [
+    {
+     "id": "oversold",
+     "weight": 1,
+     "because": "RSI14 18.12 is oversold; mean reversion favors a bounce."
+    }
+   ],
+   "bear": [
+    {
+     "id": "trend_down",
+     "weight": 2,
+     "because": "Price 83.19 sits below SMA20 94.0135, which is below SMA50 105.2936: the trend is down."
+    },
+    {
+     "id": "momentum_7d_down",
+     "weight": 1,
+     "because": "Down -12.92% over 7 days."
+    },
+    {
+     "id": "breakdown",
+     "weight": 1,
+     "because": "Closing at the 30-day low (83.19)."
+    }
+   ],
+   "score": -3,
+   "action": "HOLD",
+   "reason": "Bear case wins (score -3); long-only desk stays flat.",
+   "trade": null
+  },
+  "positionAfter": null,
+  "prevHash": "27ca82471f5720629a95df2ece48c2b3a593966ba5c279389139e920fddf1df2",
+  "hash": "13c8986dccce421711a8099649879b42451387bc15b2b2368e2efc1dc6021183"
  }
 ]
