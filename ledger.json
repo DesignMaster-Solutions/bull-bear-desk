@@ -19251,5 +19251,188 @@
   "positionAfter": null,
   "prevHash": "478b4c08fb11db7b2155375380fe0cbb2f3e97983249ef29c274ca7040f08cff",
   "hash": "8e3eb8c1203e5dfc6b526ca13f00e098780488a24c2e3d351399f3ab9f575ca5"
+ },
+ {
+  "symbol": "BTCUSD",
+  "mode": "live",
+  "evidence": {
+   "symbol": "BTCUSD",
+   "asOf": "2026-11-16",
+   "price": 64810.6,
+   "chg1d": -0.77,
+   "chg7d": -13.88,
+   "sma20": 74267.895,
+   "sma50": 79365.672,
+   "rsi14": 24.54,
+   "atr14": 3012.6143,
+   "volRatio": 1.31,
+   "high30": 84022.5,
+   "low30": 64115.1,
+   "fng": 10
+  },
+  "positionBefore": null,
+  "risk": {
+   "equity": 10000,
+   "riskPct": 1,
+   "atrStop": 2,
+   "atrTarget": 3,
+   "maxPositionPct": 25
+  },
+  "verdict": {
+   "rules": "bbd-2",
+   "bull": [
+    {
+     "id": "oversold",
+     "weight": 1,
+     "because": "RSI14 24.54 is oversold; mean reversion favors a bounce."
+    },
+    {
+     "id": "crowd_fear",
+     "weight": 1,
+     "because": "Fear & Greed at 10 (extreme fear): contrarian buy zone."
+    }
+   ],
+   "bear": [
+    {
+     "id": "trend_down",
+     "weight": 2,
+     "because": "Price 64810.6 sits below SMA20 74267.895, which is below SMA50 79365.672: the trend is down."
+    },
+    {
+     "id": "momentum_7d_down",
+     "weight": 1,
+     "because": "Down -13.88% over 7 days."
+    }
+   ],
+   "score": -1,
+   "action": "HOLD",
+   "reason": "No edge (score -1); stay flat.",
+   "trade": null
+  },
+  "positionAfter": null,
+  "prevHash": "8e3eb8c1203e5dfc6b526ca13f00e098780488a24c2e3d351399f3ab9f575ca5",
+  "hash": "68c27487d04219f38876083150f28c3a30ff8ef74c48a7a2a0cb6f9abfeea99e"
+ },
+ {
+  "symbol": "ETHUSD",
+  "mode": "live",
+  "evidence": {
+   "symbol": "ETHUSD",
+   "asOf": "2026-11-16",
+   "price": 1819.59,
+   "chg1d": -0.8,
+   "chg7d": -14.68,
+   "sma20": 2137.5695,
+   "sma50": 2360.6516,
+   "rsi14": 27.03,
+   "atr14": 120.2179,
+   "volRatio": 0.94,
+   "high30": 2471.7,
+   "low30": 1768.03,
+   "fng": 10
+  },
+  "positionBefore": null,
+  "risk": {
+   "equity": 10000,
+   "riskPct": 1,
+   "atrStop": 2,
+   "atrTarget": 3,
+   "maxPositionPct": 25
+  },
+  "verdict": {
+   "rules": "bbd-2",
+   "bull": [
+    {
+     "id": "oversold",
+     "weight": 1,
+     "because": "RSI14 27.03 is oversold; mean reversion favors a bounce."
+    },
+    {
+     "id": "crowd_fear",
+     "weight": 1,
+     "because": "Fear & Greed at 10 (extreme fear): contrarian buy zone."
+    }
+   ],
+   "bear": [
+    {
+     "id": "trend_down",
+     "weight": 2,
+     "because": "Price 1819.59 sits below SMA20 2137.5695, which is below SMA50 2360.6516: the trend is down."
+    },
+    {
+     "id": "momentum_7d_down",
+     "weight": 1,
+     "because": "Down -14.68% over 7 days."
+    }
+   ],
+   "score": -1,
+   "action": "HOLD",
+   "reason": "No edge (score -1); stay flat.",
+   "trade": null
+  },
+  "positionAfter": null,
+  "prevHash": "68c27487d04219f38876083150f28c3a30ff8ef74c48a7a2a0cb6f9abfeea99e",
+  "hash": "dcd7f88aabe8f540d26832d93c6d2c95e0ee0a34e6b6937e67d5da3662e96b87"
+ },
+ {
+  "symbol": "SOLUSD",
+  "mode": "live",
+  "evidence": {
+   "symbol": "SOLUSD",
+   "asOf": "2026-11-16",
+   "price": 71.51,
+   "chg1d": -1.7,
+   "chg7d": -17.43,
+   "sma20": 87.315,
+   "sma50": 100.8274,
+   "rsi14": 20.7,
+   "atr14": 4.9393,
+   "volRatio": 0.97,
+   "high30": 106.88,
+   "low30": 70.24,
+   "fng": 10
+  },
+  "positionBefore": null,
+  "risk": {
+   "equity": 10000,
+   "riskPct": 1,
+   "atrStop": 2,
+   "atrTarget": 3,
+   "maxPositionPct": 25
+  },
+  "verdict": {
+   "rules": "bbd-2",
+   "bull": [
+    {
+     "id": "oversold",
+     "weight": 1,
+     "because": "RSI14 20.7 is oversold; mean reversion favors a bounce."
+    },
+    {
+     "id": "crowd_fear",
+     "weight": 1,
+     "because": "Fear & Greed at 10 (extreme fear): contrarian buy zone."
+    }
+   ],
+   "bear": [
+    {
+     "id": "trend_down",
+     "weight": 2,
+     "because": "Price 71.51 sits below SMA20 87.315, which is below SMA50 100.8274: the trend is down."
+    },
+    {
+     "id": "momentum_7d_down",
+     "weight": 1,
+     "because": "Down -17.43% over 7 days."
+    }
+   ],
+   "score": -1,
+   "action": "HOLD",
+   "reason": "No edge (score -1); stay flat.",
+   "trade": null
+  },
+  "positionAfter": null,
+  "prevHash": "dcd7f88aabe8f540d26832d93c6d2c95e0ee0a34e6b6937e67d5da3662e96b87",
+  "hash": "07be6788ce0b787539ec47e31fd5abe5419561f0091d250693d15cf378b59649"
  }
 ]
