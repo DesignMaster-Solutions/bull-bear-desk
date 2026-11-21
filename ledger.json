@@ -20003,5 +20003,218 @@
   "positionAfter": null,
   "prevHash": "f2eebd9247c29726b59b6b732943cccf1ef6a220c8555015e9ef493301a5208b",
   "hash": "06b698ecbf662d28ca7fb7c549c7852c9da5ae4190dd3831283951b5efde3e26"
+ },
+ {
+  "symbol": "BTCUSD",
+  "mode": "live",
+  "evidence": {
+   "symbol": "BTCUSD",
+   "asOf": "2026-11-20",
+   "price": 58806.3,
+   "chg1d": -5.02,
+   "chg7d": -13.82,
+   "sma20": 71010.545,
+   "sma50": 77627.102,
+   "rsi14": 9.64,
+   "atr14": 2875.2,
+   "volRatio": 2.66,
+   "high30": 81315.9,
+   "low30": 58806.3,
+   "fng": 12
+  },
+  "positionBefore": null,
+  "risk": {
+   "equity": 10000,
+   "riskPct": 1,
+   "atrStop": 2,
+   "atrTarget": 3,
+   "maxPositionPct": 25
+  },
+  "verdict": {
+   "rules": "bbd-2",
+   "bull": [
+    {
+     "id": "oversold",
+     "weight": 1,
+     "because": "RSI14 9.64 is oversold; mean reversion favors a bounce."
+    },
+    {
+     "id": "crowd_fear",
+     "weight": 1,
+     "because": "Fear & Greed at 12 (extreme fear): contrarian buy zone."
+    }
+   ],
+   "bear": [
+    {
+     "id": "trend_down",
+     "weight": 2,
+     "because": "Price 58806.3 sits below SMA20 71010.545, which is below SMA50 77627.102: the trend is down."
+    },
+    {
+     "id": "momentum_7d_down",
+     "weight": 1,
+     "because": "Down -13.82% over 7 days."
+    },
+    {
+     "id": "volume_confirms_down",
+     "weight": 1,
+     "because": "Volume is 2.66x its 20-day average on a down day: sellers are committed."
+    },
+    {
+     "id": "breakdown",
+     "weight": 1,
+     "because": "Closing at the 30-day low (58806.3)."
+    }
+   ],
+   "score": -3,
+   "action": "HOLD",
+   "reason": "Bear case wins (score -3); long-only desk stays flat.",
+   "trade": null
+  },
+  "positionAfter": null,
+  "prevHash": "06b698ecbf662d28ca7fb7c549c7852c9da5ae4190dd3831283951b5efde3e26",
+  "hash": "7e09e5badd2e8e7b213f1654510fecf5a67712f7299a4ff5f7522aad602f51f6"
+ },
+ {
+  "symbol": "ETHUSD",
+  "mode": "live",
+  "evidence": {
+   "symbol": "ETHUSD",
+   "asOf": "2026-11-20",
+   "price": 1619.32,
+   "chg1d": -7.75,
+   "chg7d": -15.98,
+   "sma20": 2031.1785,
+   "sma50": 2285.0198,
+   "rsi14": 10.52,
+   "atr14": 112.0379,
+   "volRatio": 2.47,
+   "high30": 2423.16,
+   "low30": 1619.32,
+   "fng": 12
+  },
+  "positionBefore": null,
+  "risk": {
+   "equity": 10000,
+   "riskPct": 1,
+   "atrStop": 2,
+   "atrTarget": 3,
+   "maxPositionPct": 25
+  },
+  "verdict": {
+   "rules": "bbd-2",
+   "bull": [
+    {
+     "id": "oversold",
+     "weight": 1,
+     "because": "RSI14 10.52 is oversold; mean reversion favors a bounce."
+    },
+    {
+     "id": "crowd_fear",
+     "weight": 1,
+     "because": "Fear & Greed at 12 (extreme fear): contrarian buy zone."
+    }
+   ],
+   "bear": [
+    {
+     "id": "trend_down",
+     "weight": 2,
+     "because": "Price 1619.32 sits below SMA20 2031.1785, which is below SMA50 2285.0198: the trend is down."
+    },
+    {
+     "id": "momentum_7d_down",
+     "weight": 1,
+     "because": "Down -15.98% over 7 days."
+    },
+    {
+     "id": "volume_confirms_down",
+     "weight": 1,
+     "because": "Volume is 2.47x its 20-day average on a down day: sellers are committed."
+    },
+    {
+     "id": "breakdown",
+     "weight": 1,
+     "because": "Closing at the 30-day low (1619.32)."
+    }
+   ],
+   "score": -3,
+   "action": "HOLD",
+   "reason": "Bear case wins (score -3); long-only desk stays flat.",
+   "trade": null
+  },
+  "positionAfter": null,
+  "prevHash": "7e09e5badd2e8e7b213f1654510fecf5a67712f7299a4ff5f7522aad602f51f6",
+  "hash": "4c3f0bd9d460ed9ce619d75a62180c33199efea499a4ad0f0a6e2f77902845ff"
+ },
+ {
+  "symbol": "SOLUSD",
+  "mode": "live",
+  "evidence": {
+   "symbol": "SOLUSD",
+   "asOf": "2026-11-20",
+   "price": 68.72,
+   "chg1d": -5.95,
+   "chg7d": -12,
+   "sma20": 82.377,
+   "sma50": 97.1488,
+   "rsi14": 18.55,
+   "atr14": 4.6221,
+   "volRatio": 1.98,
+   "high30": 103.54,
+   "low30": 68.72,
+   "fng": 12
+  },
+  "positionBefore": null,
+  "risk": {
+   "equity": 10000,
+   "riskPct": 1,
+   "atrStop": 2,
+   "atrTarget": 3,
+   "maxPositionPct": 25
+  },
+  "verdict": {
+   "rules": "bbd-2",
+   "bull": [
+    {
+     "id": "oversold",
+     "weight": 1,
+     "because": "RSI14 18.55 is oversold; mean reversion favors a bounce."
+    },
+    {
+     "id": "crowd_fear",
+     "weight": 1,
+     "because": "Fear & Greed at 12 (extreme fear): contrarian buy zone."
+    }
+   ],
+   "bear": [
+    {
+     "id": "trend_down",
+     "weight": 2,
+     "because": "Price 68.72 sits below SMA20 82.377, which is below SMA50 97.1488: the trend is down."
+    },
+    {
+     "id": "momentum_7d_down",
+     "weight": 1,
+     "because": "Down -12% over 7 days."
+    },
+    {
+     "id": "volume_confirms_down",
+     "weight": 1,
+     "because": "Volume is 1.98x its 20-day average on a down day: sellers are committed."
+    },
+    {
+     "id": "breakdown",
+     "weight": 1,
+     "because": "Closing at the 30-day low (68.72)."
+    }
+   ],
+   "score": -3,
+   "action": "HOLD",
+   "reason": "Bear case wins (score -3); long-only desk stays flat.",
+   "trade": null
+  },
+  "positionAfter": null,
+  "prevHash": "4c3f0bd9d460ed9ce619d75a62180c33199efea499a4ad0f0a6e2f77902845ff",
+  "hash": "498a7ab0c0cbe77b06be12a71cb9f50cf59d2f37044450479b28a61578a08e69"
  }
 ]
