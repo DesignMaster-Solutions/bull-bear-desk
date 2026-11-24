@@ -20582,5 +20582,196 @@
   "positionAfter": null,
   "prevHash": "591027c60753e287070447e84a6d0752ec3ff387dc505cd1d5ffc8744f26dede",
   "hash": "263d848c770ce3871d8f86ecf0dace36da18ee2d54c4999578f3fbd78b9baca1"
+ },
+ {
+  "symbol": "BTCUSD",
+  "mode": "live",
+  "evidence": {
+   "symbol": "BTCUSD",
+   "asOf": "2026-11-23",
+   "price": 61214.3,
+   "chg1d": 0.07,
+   "chg7d": -5.55,
+   "sma20": 68521.86,
+   "sma50": 76161.48,
+   "rsi14": 17.86,
+   "atr14": 3428.5143,
+   "volRatio": 1.42,
+   "high30": 81287.1,
+   "low30": 58806.3,
+   "fng": 11,
+   "kol": {
+    "token": "BTC",
+    "side": "bear",
+    "bull": 0,
+    "bear": 3,
+    "voices": 8,
+    "conviction": 0.33
+   }
+  },
+  "positionBefore": null,
+  "risk": {
+   "equity": 10000,
+   "riskPct": 1,
+   "atrStop": 2,
+   "atrTarget": 3,
+   "maxPositionPct": 25
+  },
+  "verdict": {
+   "rules": "bbd-2",
+   "bull": [
+    {
+     "id": "oversold",
+     "weight": 1,
+     "because": "RSI14 17.86 is oversold; mean reversion favors a bounce."
+    },
+    {
+     "id": "crowd_fear",
+     "weight": 1,
+     "because": "Fear & Greed at 11 (extreme fear): contrarian buy zone."
+    }
+   ],
+   "bear": [
+    {
+     "id": "trend_down",
+     "weight": 2,
+     "because": "Price 61214.3 sits below SMA20 68521.86, which is below SMA50 76161.48: the trend is down."
+    },
+    {
+     "id": "momentum_7d_down",
+     "weight": 1,
+     "because": "Down -5.55% over 7 days."
+    },
+    {
+     "id": "kol_converge_bear",
+     "weight": 2,
+     "because": "3 of 8 trusted voices converge bearish on BTC (avg conviction 0.33)."
+    }
+   ],
+   "score": -3,
+   "action": "HOLD",
+   "reason": "Bear case wins (score -3); long-only desk stays flat.",
+   "trade": null
+  },
+  "positionAfter": null,
+  "prevHash": "263d848c770ce3871d8f86ecf0dace36da18ee2d54c4999578f3fbd78b9baca1",
+  "hash": "d7332a1b491ee7372dfd60ff11765bfde20086d81647e24f4c5702cbac5a1caf"
+ },
+ {
+  "symbol": "ETHUSD",
+  "mode": "live",
+  "evidence": {
+   "symbol": "ETHUSD",
+   "asOf": "2026-11-23",
+   "price": 1708.64,
+   "chg1d": -0.74,
+   "chg7d": -6.1,
+   "sma20": 1947.1335,
+   "sma50": 2225.6348,
+   "rsi14": 22.55,
+   "atr14": 121.825,
+   "volRatio": 1.19,
+   "high30": 2423.16,
+   "low30": 1619.32,
+   "fng": 11
+  },
+  "positionBefore": null,
+  "risk": {
+   "equity": 10000,
+   "riskPct": 1,
+   "atrStop": 2,
+   "atrTarget": 3,
+   "maxPositionPct": 25
+  },
+  "verdict": {
+   "rules": "bbd-2",
+   "bull": [
+    {
+     "id": "oversold",
+     "weight": 1,
+     "because": "RSI14 22.55 is oversold; mean reversion favors a bounce."
+    },
+    {
+     "id": "crowd_fear",
+     "weight": 1,
+     "because": "Fear & Greed at 11 (extreme fear): contrarian buy zone."
+    }
+   ],
+   "bear": [
+    {
+     "id": "trend_down",
+     "weight": 2,
+     "because": "Price 1708.64 sits below SMA20 1947.1335, which is below SMA50 2225.6348: the trend is down."
+    },
+    {
+     "id": "momentum_7d_down",
+     "weight": 1,
+     "because": "Down -6.1% over 7 days."
+    }
+   ],
+   "score": -1,
+   "action": "HOLD",
+   "reason": "No edge (score -1); stay flat.",
+   "trade": null
+  },
+  "positionAfter": null,
+  "prevHash": "d7332a1b491ee7372dfd60ff11765bfde20086d81647e24f4c5702cbac5a1caf",
+  "hash": "5aa396f2b17dab6a1832a77a04826ec8609adfe25d46b0ec35e662ee7898a7f0"
+ },
+ {
+  "symbol": "SOLUSD",
+  "mode": "live",
+  "evidence": {
+   "symbol": "SOLUSD",
+   "asOf": "2026-11-23",
+   "price": 71.95,
+   "chg1d": 1.88,
+   "chg7d": 0.62,
+   "sma20": 79.0665,
+   "sma50": 94.2082,
+   "rsi14": 28.01,
+   "atr14": 5.16,
+   "volRatio": 1.19,
+   "high30": 102.33,
+   "low30": 68.72,
+   "fng": 11
+  },
+  "positionBefore": null,
+  "risk": {
+   "equity": 10000,
+   "riskPct": 1,
+   "atrStop": 2,
+   "atrTarget": 3,
+   "maxPositionPct": 25
+  },
+  "verdict": {
+   "rules": "bbd-2",
+   "bull": [
+    {
+     "id": "oversold",
+     "weight": 1,
+     "because": "RSI14 28.01 is oversold; mean reversion favors a bounce."
+    },
+    {
+     "id": "crowd_fear",
+     "weight": 1,
+     "because": "Fear & Greed at 11 (extreme fear): contrarian buy zone."
+    }
+   ],
+   "bear": [
+    {
+     "id": "trend_down",
+     "weight": 2,
+     "because": "Price 71.95 sits below SMA20 79.0665, which is below SMA50 94.2082: the trend is down."
+    }
+   ],
+   "score": 0,
+   "action": "HOLD",
+   "reason": "No edge (score 0); stay flat.",
+   "trade": null
+  },
+  "positionAfter": null,
+  "prevHash": "5aa396f2b17dab6a1832a77a04826ec8609adfe25d46b0ec35e662ee7898a7f0",
+  "hash": "47a18dfd778e8180c852531ec849688f28550571e88367319f9c8c2292168534"
  }
 ]
